@@ -1,0 +1,17 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Arrow
+  Date: 2019/3/6
+  Time: 17:15
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Hello</title>
+</head>
+<body>
+    <b>Welcome:<%=request.getAttribute("user")%>
+    </b>
+</body>
+</html>
