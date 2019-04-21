@@ -24,7 +24,8 @@ public class CommentServiceImpl implements CommentService {
         return  res;
     }
 
-    public int insertComments() {
-        return 0;
+    public int insertComment(Comment comment) {
+        int res = commentDao.insertComment(comment) ;
+        return res;
     }
 }

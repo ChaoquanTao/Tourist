@@ -35,4 +35,19 @@ public class CommentDaoImpl implements CommentDao {
         }
         return null;
     }
+
+    public int insertComment(Comment comment) {
+        try {
+            Statement statement = connection.createStatement() ;
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "insert into comment(user_name,user_comment)values (?,?)") ;
+            preparedStatement.setString(1,comment.getUserName() );
+            preparedStatement.setString(2,comment.getUserComment());
+            preparedStatement.execute() ;
+            return 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0 ;
+    }
 }

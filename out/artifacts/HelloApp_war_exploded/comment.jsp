@@ -126,10 +126,10 @@
     <!-- /.chat -->
     <div class="box-footer">
         <div class="input-group">
-            <input class="form-control" placeholder="Type message...">
+            <input class="form-control" placeholder="Type message..." id="input_comment">
 
             <div class="input-group-btn">
-                <button type="button" class="btn btn-success"><i class="fa fa-plus"></i></button>
+                <button type="button" class="btn btn-success" onclick="submitComment()"><i class="fa fa-plus"></i></button>
             </div>
         </div>
     </div>
@@ -172,6 +172,42 @@
         }
 
     });
+    
+    function submitComment() {
+        var name = <%=request.getSession().getAttribute("name")%> ;
+        var text = $("#input_comment").val();
+        console.log(text) ;
+        if(text==""){
+            alert("请先输入评论") ;
+            return ;
+        }
+        $.ajax({
+            type:"POST",
+            url:"/commentSave",
+            data:{name:name,comment:text},
+            success:function (data) {
+                /**
+                 * 显示评论
+                 */
+
+                var node = $("<div class=\"item\">\n" +
+                    "            <img src=\"dist/img/user2-160x160.jpg\" alt=\"user image\" class=\"offline\">\n" +
+                    "\n" +
+                    "            <p class=\"message\">\n" +
+                    "                <a href=\"#\" class=\"name\">\n" +
+                    "                    <small class=\"text-muted pull-right\"><i class=\"fa fa-clock-o\"></i> 5:30</small>\n" +
+                                         name+
+                    "                </a>\n" +
+                                         text +
+                    "            </p>\n" +
+                    "        </div>");
+                var parent = $("#chat-box") ;
+                parent.append(node) ;
+
+            }
+        })
+
+    }
 
 </script>
 
