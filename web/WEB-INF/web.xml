@@ -30,4 +30,13 @@
         <servlet-name>registerServlet</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>getCommentsServlet</servlet-name>
+        <servlet-class>controller.CommentDisplayServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getCommentsServlet</servlet-name>
+        <url-pattern>/commentDisplay</url-pattern>
+    </servlet-mapping>
 </web-app>
